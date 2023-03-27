@@ -5,9 +5,17 @@ import { carregaTopo } from "../../../Services/carregaDados";
 
 class Topo extends React.Component {
 
+    state = {
+        topo: {
+            boasVindas: '',
+            legenda: '',
+        }
+    }
+
     atualizaTopo() {
 
         const retorno = carregaTopo();
+        this.setState({topo: retorno});
 
     }
 
@@ -20,8 +28,8 @@ class Topo extends React.Component {
         return <>
             <View style={estilos.topo}>
                 <Image source={logo} style={estilos.imagem}/>
-                <Text style={estilos.boasVindas}>Olá Jonathan</Text>
-                <Text style={estilos.legenda}>Encontre os melhores produtores</Text>
+                <Text style={estilos.boasVindas}>{ this.state.topo.boasVindas }</Text>
+                <Text style={estilos.legenda}>{ this.state.topo.legenda }</Text>
             </View>
         </>
     }
@@ -49,6 +57,7 @@ marginTop: 24,
 fontSize: 26,
 lineHeight: 42,
 fontWeight: 'bold',
+color: '#464646',
 
 },
 
@@ -56,6 +65,7 @@ legenda: {
 
 fontSize: 16,
 lineHeight: 26,
+color: '#a3a3a3',
 
 },
 
